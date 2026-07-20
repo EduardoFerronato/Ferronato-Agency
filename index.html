@@ -275,17 +275,23 @@
   .about p{color:var(--light-dim);font-size:16px;line-height:1.8;margin-bottom:18px;max-width:560px;}
   .about-signoff{
     margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.12);
-    font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--light-text);
+    display:flex;flex-wrap:wrap;gap:36px;
   }
-  .about-signoff span{display:block;color:var(--light-dim);margin-top:4px;font-family:'Inter',sans-serif;}
+  .founder{display:flex;flex-direction:column;gap:4px;}
+  .founder-name{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--light-text);}
+  .founder-role{font-size:14px;color:var(--light-dim);font-family:'Inter',sans-serif;}
 
   /* ---------- CONTACT ---------- */
   .contact{background:var(--bg);}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:56px;}}
-  .contact-info h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:24px;max-width:480px;}
-  .contact-info p.lede{color:var(--text-dim);margin-bottom:40px;max-width:440px;}
-  .contact-block{margin-bottom:28px;}
+  .contact-intro{max-width:640px;margin-bottom:56px;}
+  .contact-intro h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:24px;}
+  .contact-intro p.lede{color:var(--text-dim);max-width:520px;}
+  .contact-body{display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;}
+  @media(max-width:900px){.contact-body{grid-template-columns:1fr;gap:56px;}}
+  .contact-details{
+    display:flex;flex-direction:column;gap:26px;
+    padding-top:4px;
+  }
   .contact-block .label{
     font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--text-faint);margin-bottom:8px;
@@ -503,8 +509,14 @@
           <p>A ANED Agency existe para resolver um problema comum: empresas que investem em marketing mas têm um site que não passa confiança — ou que têm um site bonito, mas invisível.</p>
           <p>Trabalhamos desenvolvimento web e marketing digital como uma coisa só, com atendimento próximo e direto, pensado para o empreendedor de Sinop-MT e região que quer parecer — e ser — tão profissional online quanto é no dia a dia.</p>
           <div class="about-signoff">
-            Eduardo Ferronato
-            <span>Front-end Developer &amp; Fundador, ANED Agency</span>
+            <div class="founder">
+              <span class="founder-name">Eduardo Ferronato</span>
+              <span class="founder-role">Developer &amp; Fundador</span>
+            </div>
+            <div class="founder">
+              <span class="founder-name">Anna Klassmann Ferronato</span>
+              <span class="founder-role">Marketing &amp; Fundadora</span>
+            </div>
           </div>
         </div>
       </div>
@@ -514,17 +526,38 @@
   <!-- ================= CONTACT ================= -->
   <section id="contato" class="contact">
     <div class="wrap">
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <div class="eyebrow">
-            <span class="mark">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3L21 20H3L12 3Z" stroke="#c19a5b" stroke-width="1.6"/></svg>
-            </span>
-            Vamos conversar
-          </div>
-          <h2>Pronto para ter um site e uma estratégia que trabalham juntos?</h2>
-          <p class="lede">Conte um pouco sobre sua empresa e retornamos com os próximos passos.</p>
+      <div class="contact-intro reveal">
+        <div class="eyebrow">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3L21 20H3L12 3Z" stroke="#c19a5b" stroke-width="1.6"/></svg>
+          </span>
+          Vamos conversar
+        </div>
+        <h2>Pronto para ter um site e uma estratégia que trabalham juntos?</h2>
+        <p class="lede">Conte um pouco sobre sua empresa e retornamos com os próximos passos.</p>
+      </div>
 
+      <div class="contact-body">
+        <div class="reveal">
+          <form class="contact-form" id="contactForm">
+            <div class="field">
+              <label for="fname">Nome</label>
+              <input type="text" id="fname" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="field">
+              <label for="femail">E-mail</label>
+              <input type="email" id="femail" name="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="field">
+              <label for="fmsg">Mensagem</label>
+              <textarea id="fmsg" name="message" rows="5" placeholder="Conte um pouco sobre seu projeto..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-solid" style="align-self:flex-start;">Enviar mensagem</button>
+            <div class="form-msg" id="formMsg" role="status"></div>
+          </form>
+        </div>
+
+        <div class="contact-details reveal">
           <div class="contact-block">
             <div class="label">Localização</div>
             <div class="value">Sinop — Mato Grosso, Brasil</div>
@@ -544,25 +577,6 @@
             <div class="label">Redes sociais</div>
             <div class="value muted">em breve</div>
           </div>
-        </div>
-
-        <div class="reveal">
-          <form class="contact-form" id="contactForm">
-            <div class="field">
-              <label for="fname">Nome</label>
-              <input type="text" id="fname" name="name" placeholder="Seu nome" required>
-            </div>
-            <div class="field">
-              <label for="femail">E-mail</label>
-              <input type="email" id="femail" name="email" placeholder="seu@email.com" required>
-            </div>
-            <div class="field">
-              <label for="fmsg">Mensagem</label>
-              <textarea id="fmsg" name="message" rows="5" placeholder="Conte um pouco sobre seu projeto..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-solid" style="align-self:flex-start;">Enviar mensagem</button>
-            <div class="form-msg" id="formMsg" role="status"></div>
-          </form>
         </div>
       </div>
     </div>
