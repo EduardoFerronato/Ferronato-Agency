@@ -148,11 +148,13 @@
   .burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 
   @media(max-width:860px){
+    header.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(11,11,13,0.94);}
     .nav-inner{justify-content:space-between;gap:0;}
     nav.links{
-      position:fixed;inset:76px 0 0 0;background:var(--bg);
+      position:fixed;inset:76px 0 0 0;background:var(--bg);z-index:150;
       flex-direction:column;justify-content:flex-start;padding:50px 40px;gap:28px;
       transform:translateX(100%);transition:transform .35s ease;border-top:1px solid var(--line);
+      overflow-y:auto;
     }
     nav.links.open{transform:translateX(0);}
     nav.links a{font-size:20px;}
@@ -588,12 +590,14 @@
     const open = navLinks.classList.toggle('open');
     burger.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   document.querySelectorAll('.nav-link').forEach(a => {
     a.addEventListener('click', () => {
       navLinks.classList.remove('open');
       burger.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     });
   });
 
