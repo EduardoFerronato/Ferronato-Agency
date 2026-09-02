@@ -281,6 +281,8 @@ section{position:relative;padding:120px 0;}
 }
 .contact-block .value{font-size:17px;font-weight:500;}
 .contact-block .value.muted{color:var(--text-faint);font-size:14px;font-weight:400;font-style:italic;}
+.contact-block .value a{transition:color .2s ease;}
+.contact-block .value a:hover{color:var(--accent);}
 
 form.contact-form{display:flex;flex-direction:column;gap:22px;}
 .field{display:flex;flex-direction:column;gap:8px;}
