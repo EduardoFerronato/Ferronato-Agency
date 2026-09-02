@@ -252,8 +252,6 @@ section{position:relative;padding:120px 0;}
 .about .eyebrow{color:#8a6a34;}
 .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;align-items:center;}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:44px;}}
-.about-mark{width:150px;}
-.about-mark img{width:100%;}
 .about h2{color:var(--light-text);font-size:clamp(26px,3.6vw,38px);margin-bottom:22px;}
 .about p{color:var(--light-dim);font-size:16px;line-height:1.8;margin-bottom:18px;max-width:560px;}
 .about-signoff{
@@ -281,6 +279,8 @@ section{position:relative;padding:120px 0;}
 }
 .contact-block .value{font-size:17px;font-weight:500;}
 .contact-block .value.muted{color:var(--text-faint);font-size:14px;font-weight:400;font-style:italic;}
+.contact-block .value a{transition:color .2s ease;}
+.contact-block .value a:hover{color:var(--accent);}
 
 form.contact-form{display:flex;flex-direction:column;gap:22px;}
 .field{display:flex;flex-direction:column;gap:8px;}

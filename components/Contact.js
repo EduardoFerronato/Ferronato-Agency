@@ -85,7 +85,15 @@ export default function Contact() {
             </div>
             <div className="contact-block">
               <div className="label">Redes sociais</div>
-              <div className="value muted">em breve</div>
+              <div className="value">
+                <a
+                  href="https://www.instagram.com/ferronato.agency/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @ferronato.agency
+                </a>
+              </div>
             </div>
           </div>
         </div>
